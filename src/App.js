@@ -1,26 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Fragment } from 'react';
 import './App.css';
+import Data from './components/data'
+/* Redux */
+import { connect } from 'react-redux'
 
-function App() {
+function App({ contador, addmore, reduceIt }) {
+  console.log(contador)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+
+      <div className="App" style={{ display: 'flex', flexDirection: 'column', width: '100%', justifyContent: 'center' }}>
+
+        <div style={{ display: 'flex', flexDirection: 'column', width: '100%', textAlign: 'center' }}>
+          <h1>React redux contador</h1>
+          <span style={{ fontWeight: '600', fontSize: '50px' }}>{contador}</span>
+          <div>
+            <button onClick={() => addmore()}>+</button>
+            <button onClick={() => reduceIt()}>-</button>
+          </div>
+        </div>
+      </div>
+      <Data />
+    </Fragment>
   );
 }
 
-export default App;
+/* Redux */
+const mapStateToProps = state => ({
+  contador: state.contador
+})
+
+const mapDispatchToProps = dispatch => ({
+  addmore() {
+    dispatch({
+      type: 'ADD_MORE',
+    })
+  },
+
+  reduceIt() {
+    dispatch({
+      type: 'REDUCE_IT'
+    })
+  }
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
