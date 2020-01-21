@@ -5,7 +5,7 @@ import Data from './components/data'
 import { connect } from 'react-redux'
 
 function App({ contador, addmore, reduceIt }) {
-  console.log(contador)
+
   return (
     <Fragment>
 

@@ -19,7 +19,7 @@ const Index = () => {
         data: ''
     })
 
-    console.log(strings)
+
 
     const handleChange = (e) => {
         setvalues({ ...values, [e.target.name]: e.target.value })

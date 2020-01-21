@@ -6,7 +6,7 @@ const Index = () => {
     const { strings } = useSelector(state => state);
     const removeComment = useCallback(values => dispatch({ type: 'REMOVE_COMMENT', values }), [dispatch])
 
-    console.log(strings)
+
     let cards
     if (strings.length > 0 && strings !== undefined) {
         cards = strings.map((res, key) => {
